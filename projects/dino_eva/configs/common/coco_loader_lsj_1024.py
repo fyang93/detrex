@@ -1,10 +1,13 @@
 import detectron2.data.transforms as T
 from detectron2 import model_zoo
+from detrex.config import get_config
 from detectron2.config import LazyCall as L
 
 # Data using LSJ
 image_size = 1024
-dataloader = model_zoo.get_config("common/data/coco.py").dataloader
+# dataloader = model_zoo.get_config("common/data/coco.py").dataloader
+dataloader = get_config("common/data/custom.py").dataloader
+
 dataloader.train.mapper.augmentations = [
     L(T.RandomFlip)(horizontal=True),  # flip first
     L(T.ResizeScale)(

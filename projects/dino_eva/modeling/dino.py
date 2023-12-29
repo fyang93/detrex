@@ -516,7 +516,6 @@ class DINO(nn.Module):
         images = [(x - self.pixel_mean) / self.pixel_std for x in images]
         
         img_size = [[img.shape[1], img.shape[2]] for img in images]
-
         # TODO: modify square_size when necessary to avoid negative padding
         max_size = 0
         for img in images:
